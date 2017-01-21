@@ -6,7 +6,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   	<style type="text/css">
-	  	.center {
+		.center {
 			text-align: center;
 		}
 		.absoluteCenter {
@@ -20,49 +20,26 @@
 		}
 		.createPad {
 			background-color: white; 
-			padding: 2em
+			padding: 2em;
 		}
-	</style>
+  	</style>
 </head>
 <body style="background-image:url(background.jpg); background-repeat:no-repeat; background-size:cover;">
 	<div style="color: black; font-size: 30px">Lost and Found</div>
 	<div class="center absoluteCenter createPad">
-		<form action="/adduser" method="post" onsubmit="myFunction(); return false;">
+		<form>
 		    <div class="form-group">
 		    	<label for="username">Username:</label>
-		    	<input type="username" class="form-control" id="username" name="username">
+		    	<input type="username" class="form-control" id="username">
 		  	</div>
 		  		<div class="form-group">
 		    	<label for="pwd">Password:</label>
-		    	<input type="password" class="form-control" id="pwd" name="password">
+		    	<input type="password" class="form-control" id="pwd">
 		  	</div>
-		  	<div>
-		  		<div class="form-group">
-		    	<label for="pwdR">Retype Password:</label>
-		    	<input type="passwordR" class="form-control" id="pwdR" name="passwordR">
-		    	<br>
-		  		<button id="register" type="submit" class="btn btn-primary">Register</button>
-		  	</div>
-		  	<div>
-		  		<label>Already have an account? </label>
+		  	<div class="center">
 		  		<button id="signIn" type="submit" class="btn btn-primary">Sign In</button>
 		  	</div>
 		</form>
 	</div>
-
-	<script>src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"</script> 
-	<script>
-	$(document).ready(function() {
-    $('#register').click(function() {
-        var name = $('#username').val();
-        var password = $('#pwd').val();
-        console.log(name);
-        console.log(password);
-    	});
-	});
-	function myFunction() {
-	    //do nothing
-	}
-    </script>
 </body>
 </html>
