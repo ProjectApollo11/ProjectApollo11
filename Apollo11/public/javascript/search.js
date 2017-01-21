@@ -3,7 +3,7 @@ $(document).ready(function() {
 	var microsoftSubscriptionKey = "92168c2441d7493395b53389db8b7844";
 	
 	var originalWord = "football gome";
-	var correctedWord;
+	var correctedWord = [];
 	
 	var url = "https://api.cognitive.microsoft.com/bing/v5.0/spellcheck/?text=" + originalWord + "&mode=spell&mkt=en-us";
 	console.log(url);
@@ -23,23 +23,25 @@ $(document).ready(function() {
             //data: "{body}",
         })
         .done(function(data) {
-			correctedWord = data;
-            console.log(correctedWord);
+			console.log(data);
+			correctedWord = originalWord.split(" ");
+			
+			for (var i = 0; i < data['flaggedTokens'].length; i++) {
+				var replaceWord = data['flaggedTokens'][i]['token'];
+				correctedWord[correctedWord.indexOf(replaceWord)] = (data['flaggedTokens'][i]['suggestions']['0']['suggestion']);
+				
+			}
+			console.log(correctedWord);
+
+
+			
+			
         })
         .fail(function() {
             console.log("error"); 
         });
     });
-	
-	/**
-	$.get("http://words.bighugelabs.com/api/2/5595cc268716dd1d0221f56011c81aa9/" + originalWord + "/json", function(data, status) {
-		
-		console.log(data);
-		console.log(status);
-			
-		
-	});**/
-	
+
 	
     
     
