@@ -38,7 +38,11 @@ a {
 }
 
 .createPad {
-	background-color: white; 
+	background-color: white;
 	padding: 2em
+}
+
+#name{
+    max-width: 40%;
 }
 
