@@ -1,7 +1,13 @@
 $(document).ready(function() {
 	
-
+	var subscriptionKey = "19cd939261b24688b8f482740f01c40c";
 	
+	var tags, category, caption, description;
+	
+	var imageURL = 'http://icons.iconarchive.com/icons/bingxueling/fruit-vegetables/256/orange-icon.png';
+	
+	var imageSource = '{\"url\":\"' + imageURL + '\"}';
+		
 	
 	$(function() {
        	
@@ -12,14 +18,15 @@ $(document).ready(function() {
             beforeSend: function(xhrObj){
                 // Request headers
                 xhrObj.setRequestHeader("Content-Type","application/json");
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","19cd939261b24688b8f482740f01c40c");
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key",subscriptionKey);
             },
             type: "POST",
             // Request body
-            data: '{"url":"http://icons.iconarchive.com/icons/bingxueling/fruit-vegetables/256/orange-icon.png"}',
+            data: imageSource,
         })
         .done(function(data) {
-            console.log(data);
+			category = data['categories']['0'];
+			console.log(category);
         })
         .fail(function() {
             console.log("error");
@@ -34,14 +41,17 @@ $(document).ready(function() {
             beforeSend: function(xhrObj){
                 // Request headers
                 xhrObj.setRequestHeader("Content-Type","application/json");
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","19cd939261b24688b8f482740f01c40c");
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key",subscriptionKey);
             },
             type: "POST",
             // Request body
-            data: '{"url":"http://icons.iconarchive.com/icons/bingxueling/fruit-vegetables/256/orange-icon.png"}',
+            data: imageSource,
         })
         .done(function(data) {
-            console.log(data['description']['tags']);
+			tags = data['description']['tags'];
+			caption = data['description']['captions']['0'];
+            console.log(tags);
+			console.log(caption);
         })
         .fail(function() {
             console.log("error");
@@ -55,15 +65,15 @@ $(document).ready(function() {
             beforeSend: function(xhrObj){
                 // Request headers
                 xhrObj.setRequestHeader("Content-Type","application/json");
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","19cd939261b24688b8f482740f01c40c");
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key",subscriptionKey);
             },
             type: "POST",
             // Request body
-            data: '{"url":"http://icons.iconarchive.com/icons/bingxueling/fruit-vegetables/256/orange-icon.png"}',
+            data: imageSource,
         })
         .done(function(data) {
-			console.log(data);
-            console.log(data["tags"])
+			description = data["tags"];
+            console.log(description);
         })
         .fail(function() {
             console.log("error");
