@@ -2,11 +2,12 @@
 <html>
 <head>
 	<title>LAF</title>
-	<link rel="stylesheet" href="stylesheets/style.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
+
+	<link rel="stylesheet" href="stylesheets/style.css">
+	</head>
 <body style="background-image:url(background.jpg); background-repeat:no-repeat; background-size:cover;">
 	<div style="color: black; font-size: 30px">Lost and Found</div>
 	<div class="center absoluteCenter createPad">
@@ -25,7 +26,7 @@
 		    	<input type="passwordR" class="form-control" id="pwdR">
 		  	</div>
 		  	<div class="center">
-		  		<button id="register" type="submit" class="btn btn-primary">Register</button>
+		  		<button id="register" type="submit" class="btn btn-primary" id="registerButton">Register</button>
 		  	</div>
 		  	<div>
 		  		<label>Already have an account? </label>
@@ -33,6 +34,7 @@
 		  	</div>
 		</form>
 	</div>
+<<<<<<< 1cd4d033d90c0c3a4b26793dece9a9661ef4cf02
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script>
@@ -46,5 +48,23 @@
 	    //do nothing
 	}
     </script>
+=======
+		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+		<script>
+		
+		$(document).ready(function() {
+    		$('#register').click(function() {
+    			console.log("1");
+        var name = $('#username').val();
+        console.log(name);
+    });
+});
+
+		function myFunction(){
+			
+		}
+		</script>
+		
+>>>>>>> changes made into views
 </body>
 </html>
