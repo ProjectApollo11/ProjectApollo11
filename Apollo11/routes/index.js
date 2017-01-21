@@ -1,4 +1,5 @@
 var express = require('express');
+var app = require('express')();
 var router = express.Router();
 var io = require('socket.io')();
 
@@ -6,8 +7,8 @@ var io = require('socket.io')();
 
 var numuser = 0;
 
-router.get('/',function(req,res,next){
-	res.sendFile(__dirname + '/index.html');
+app.get('/',function(req,res){
+  res.sendFile(__dirname + '/index.html');
 });
 
 io.on('connection', function(socket){
