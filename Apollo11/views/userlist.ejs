@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+  </head>
+  <body>
+  	<h1>Loop</h1>
+  	<ul>
+  		<% userlist.forEach(function(user){ %>
+        <li><%= user.username %> - <%= user.password %></li>
+    <% }); %>
+  	</ul>
+  </body>
+  </html>
