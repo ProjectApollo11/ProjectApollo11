@@ -4,9 +4,37 @@ $(document).ready(function() {
 	
 	var tags, category, caption, description;
 	
+	var synonymsTags = [];
+	
 	var imageURL = 'http://icons.iconarchive.com/icons/bingxueling/fruit-vegetables/256/orange-icon.png';
 	
 	var imageSource = '{\"url\":\"' + imageURL + '\"}';
+	
+	
+	
+	function createSynonyms(word, i, callback) {
+		
+		$.ajax({
+			url: "http://words.bighugelabs.com/api/2/5595cc268716dd1d0221f56011c81aa9/" + word + "/json",
+			type: "GET",
+			success: function(data, status) {
+				//console.log(data);
+				synonymsTags[i] = data;
+				console.log(synonymsTags[i]);
+			}
+		});
+		/**
+		$.get("http://words.bighugelabs.com/api/2/5595cc268716dd1d0221f56011c81aa9/" + word + "/json", function(data, status){
+			synonymsTags[i] = data;
+			console.log(data);
+			
+
+		});
+		
+		**/
+			
+		
+	}
 		
 	
 	$(function() {
@@ -52,6 +80,12 @@ $(document).ready(function() {
 			caption = data['description']['captions']['0'];
             console.log(tags);
 			console.log(caption);
+			for (var i = 0; i < tags.length; i++) {
+				console.log(createSynonyms(tags[i], i));
+			}
+			
+			
+			
         })
         .fail(function() {
             console.log("error");
@@ -72,13 +106,15 @@ $(document).ready(function() {
             data: imageSource,
         })
         .done(function(data) {
-			description = data["tags"];
+			description = data['tags'];
             console.log(description);
         })
         .fail(function() {
             console.log("error");
         });
     });
+	
+	
 
 	
 	

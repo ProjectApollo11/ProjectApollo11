@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
   <title>Lost And Found</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css">
@@ -51,3 +52,70 @@
   </script>-->
 </body>
 </html>
+=======
+	<title>LAF</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<style type="text/css">
+	  	.center {
+			text-align: center;
+		}
+
+		.absoluteCenter {
+		   	position: fixed;
+		    width: 20%; /* Set your desired with */
+		    z-index: 2; /* Make sure its above other items. */
+		    top: 50%;
+		    left: 50%;
+		    margin-top: -10%; /* Changes with height. */
+		    margin-left: -10%; /* Your width divided by 2. */
+		}
+		.createPad {
+			background-color: white; 
+			padding: 2em
+		}
+	</style>
+</head>
+<body style="background-image:url(background.jpg); background-repeat:no-repeat; background-size:cover;">
+	<div style="color: black; font-size: 30px">Lost and Found</div>
+	<div class="center absoluteCenter createPad">
+		<form action="/adduser" method="post" onsubmit="myFunction(); return false;">
+		    <div class="form-group">
+		    	<label for="username">Username:</label>
+		    	<input type="username" class="form-control" id="username" name="username">
+		  	</div>
+		  		<div class="form-group">
+		    	<label for="pwd">Password:</label>
+		    	<input type="password" class="form-control" id="pwd" name="password">
+		  	</div>
+		  	<div>
+		  		<div class="form-group">
+		    	<label for="pwdR">Retype Password:</label>
+		    	<input type="passwordR" class="form-control" id="pwdR" name="passwordR">
+		  		<button id="register" type="submit" class="btn btn-primary">Register</button>
+		  	</div>
+		  	<div>
+		  		<label>Already have an account? </label>
+		  		<button id="signIn" type="submit" class="btn btn-primary">Sign In</button>
+		  	</div>
+		</form>
+	</div>
+
+	<script>src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"</script> 
+	<script>
+	$(document).ready(function() {
+    $('#register').click(function() {
+        var name = $('#username').val();
+        var password = $('#pwd').val();
+        console.log(name);
+        console.log(password);
+    	});
+	});
+	function myFunction() {
+	    //do nothing
+	}
+    </script>
+</body>
+</html>
+>>>>>>> origin

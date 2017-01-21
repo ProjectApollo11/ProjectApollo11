@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      form { background: #eee; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      form input { border: 0; padding: 10px; width: 40%; margin-right: .5%; }
+      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages li { padding: 5px 10px; }
+      #messages li:nth-child(odd) { background: #eee; }
+    </style>
+  </head>
+  <body>
+    <!--<canvas id="myCanvas" width="400" height="300" style="border:1px solid #000000;">
+</canvas>-->
+    <ul id="messages"></ul>
+    <form action="">
+      <input type="file" id="imageFile"/>
+      <input id="m" autocomplete="off" /><button id="submit">Send</button>
+    </form>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      var socket = io();
+      $('#submit').click(function(){
+        socket.emit('chat message', $('#m').val());
+        $('#m').val('');
+        return false;
+      });
+    
+      socket.on('chat message', function(msg){
+        $('#messages').append($('<li>').text(msg));
+      });
+      
+
+      /*var ctx = document.getElementById('myCanvas').getContext('2d');
+      socket.on("image", function(image , buffer) {
+        if (image) {
+        var img = new Image();
+        img.src = 'data:image/jpeg;base64,' + image.buffer;
+        ctx.drawImage(img, 0, 0);
+  }
+});*/
+      socket.on('addimage' , function(msg,base64image){
+          $('#messages').append($('<li>').text(msg),'<a target="_blank" href="'+ base64image + '"><img src="'+ base64image+'" /></a>');
+
+        });
+
+      $(function(){
+        $('#imageFile').on('change',function(e){
+          var file = e.originalEvent.target.files[0];
+          var reader = new FileReader();
+          reader.onload = function(evt){
+            socket.emit('user image',evt.target.result);
+          };
+          reader.readAsDataURL(file);
+        });
+      });
+
+    </script>
+  </body>
+</html>
