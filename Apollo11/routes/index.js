@@ -1,5 +1,4 @@
 var express = require('express');
-var app = require('express')();
 var router = express.Router();
 var io = require('socket.io')();
 
@@ -7,9 +6,20 @@ var io = require('socket.io')();
 
 var numuser = 0;
 
-// app.get('/',function(req,res){
-//   res.sendFile(__dirname + '/index.html');
-// });
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index');
+});
+
+router.get('/userlist', function(req, res) {
+    var db = req.db;
+    var collection = db.get('usercollection');
+    collection.find({},{},function(e,docs){
+        res.render('userlist', {
+            "userlist" : docs
+        });
+    });
+});
 
 io.on('connection', function(socket){
   numuser++;
@@ -29,9 +39,6 @@ io.on('connection',function(socket){
 	});
 });
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index');
-});
+
 
 module.exports = router;
