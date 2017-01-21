@@ -31,10 +31,39 @@
 		</div>
 	</div>
 
+	<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-database.js"></script>
+
 	<script>
+	
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCNxSCvDABr6n1XL4__EnBJP742q9WTetg",
+    authDomain: "storage-a02fd.firebaseapp.com",
+    databaseURL: "https://storage-a02fd.firebaseio.com",
+    storageBucket: "storage-a02fd.appspot.com",
+    messagingSenderId: "190720639576"
+  };
+  firebase.initializeApp(config);
+
+  var storage = firebase.storage();
+
+  // Create a storage reference from our storage service
+	var storageRef = storage.ref();
+
+	// Create a child reference
+	var imagesRef = storageRef.child('images');
+// imagesRef now points to 'images'
+
+// Child references can also take paths delimited by '/'
+	var spaceRef = storageRef.child('images/space.jpg');
+// spaceRef now points to "images/space.jpg"
+// imagesRef still points to "images"
 	function myFunction() {
 	    //do nothing
 	}
 	</script>
+
+
 </body>
 </html>
