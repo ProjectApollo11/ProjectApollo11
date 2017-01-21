@@ -1,55 +1,53 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Socket.IO chat</title>
+<head>
+  <title>Lost And Found</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #eee; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 40%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
-    </style>
-  </head>
-  <body>
-        <ul id="messages"></ul>
-    <form action="">
-      <button id="upload">Upload</button><input type="file" id="imageFile"/>
-      <input id="m" autocomplete="off" /><button id="submit">Send</button>
+    body {
+        background-color: lightblue;
+    }
+  </style>
+</head>
+<body>
+  <div class="center" style="position: absolute; top: 50%; left: 50%; background-color: white; padding: 2em">
+    <form>
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="username" class="form-control" id="username">
+        </div>
+          <div class="form-group">
+          <label for="pwd">Password:</label>
+          <input type="password" class="form-control" id="pwd">
+        </div>
+          <div class="form-group">
+          <label for="pwdR">Retype Password:</label>
+          <input type="passwordR" class="form-control" id="pwdR">
+        </div>
+        <div class="center">
+          <button type="submit" class="btn btn-primary" id="registerButton">Register</button>
+        </div>
+        <div>
+          <label>Already have an account? </label>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+        <div class="center">
+
+        </div>
     </form>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-    <script>
-      var socket = io();
-      $('#submit').click(function(){
-        socket.emit('chat message', $('#m').val());
-        $('#m').val('');
-        return false;
-      });
+  </div>
+
+  <!--<script>
+    $(document).ready(function() {
+    $('#registerButton').click(function() {
+        var name = $('#username').val();
+        console.log(name);
+    });
+});
     
-      socket.on('chat message', function(msg){
-        $('#messages').append($('<li>').text(msg));
-      });
-      
-
-            socket.on('addimage' , function(msg,base64image){
-          $('#messages').append($('<li>').text(msg),'<a target="_blank" href="'+ base64image + '"><img src="'+ base64image+'" /></a>');
-
-        });
-
-      $(function(){
-        $('#imageFile').on('change',function(e){
-          var file = e.originalEvent.target.files[0];
-          var reader = new FileReader();
-          reader.onload = function(evt){
-            socket.emit('user image',evt.target.result);
-          };
-          reader.readAsDataURL(file);
-        });
-      });
-
-    </script>
-  </body>
+  </script>-->
+</body>
 </html>
