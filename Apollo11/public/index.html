@@ -10,7 +10,7 @@
 <body style="background-image:url(background.jpg); background-repeat:no-repeat; background-size:cover;">
 	<div style="color: black; font-size: 30px">Lost and Found</div>
 	<div class="center absoluteCenter createPad">
-		<form>
+		<form onsubmit="myFunction(); return false;">
 		    <div class="form-group">
 		    	<label for="username">Username:</label>
 		    	<input type="username" class="form-control" id="username">
@@ -33,5 +33,18 @@
 		  	</div>
 		</form>
 	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script>
+	$(document).ready(function() {
+    $('#register').click(function() {
+        var name = $('#username').val();
+        console.log(name);
+    	});
+	});
+	function myFunction() {
+	    //do nothing
+	}
+    </script>
 </body>
 </html>
