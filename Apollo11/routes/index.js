@@ -28,6 +28,31 @@ router.get('/login', function(req,res){
     res.render('login');
 });
 
+
+
+router.post('/adduser', function(req,res){
+  var db = req.db;
+  
+  console.log(req.body.username);
+   console.log(req.body.password);
+
+  var userName = req.body.username;
+  var passWord = req.body.password;
+
+  collection.insert({
+    "username" : userName,
+    "password" : password
+  }, function(err,doc){
+    if(err){
+      res.send("There is a problem adding the information to the database.");
+    }
+    else{
+      res.redirect("main");
+    }
+  
+  });
+});
+
 io.on('connection', function(socket){
   numuser++;
   console.log('user' + numuser +' connected');
