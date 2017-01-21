@@ -21,6 +21,13 @@ router.get('/userlist', function(req, res) {
     });
 });
 
+router.get('/login', function(req,res){
+    // var db = req.db;
+
+    // var userName = req.
+    res.render('login');
+});
+
 io.on('connection', function(socket){
   numuser++;
   console.log('user' + numuser +' connected');
