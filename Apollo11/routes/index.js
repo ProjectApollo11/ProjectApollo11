@@ -7,9 +7,9 @@ var io = require('socket.io')();
 
 var numuser = 0;
 
-app.get('/',function(req,res){
-  res.sendFile(__dirname + '/index.html');
-});
+// app.get('/',function(req,res){
+//   res.sendFile(__dirname + '/index.html');
+// });
 
 io.on('connection', function(socket){
   numuser++;
@@ -31,7 +31,7 @@ io.on('connection',function(socket){
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index');
 });
 
 module.exports = router;
