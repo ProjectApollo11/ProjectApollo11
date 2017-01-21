@@ -31,7 +31,14 @@ a {
     margin-left: -30%; /* Your width divided by 2. */
 }
 
+.padRecents {
+	background-color: white;
+	border: solid;
+	border-spacing: 1em
+}
+
 .createPad {
 	background-color: white; 
 	padding: 2em
 }
+
