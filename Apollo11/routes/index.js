@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var io = require('socket.io')();
-
+var mongo = require('mongodb');
+var monk = require('monk');
+var db = monk('localhost:27017/Apollo11');
 
 
 var numuser = 0;
@@ -9,6 +11,49 @@ var numuser = 0;
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index');
+});
+
+router.get('/main', function(req, res, next) {
+  res.render('main');
+});
+
+router.post('/adduser', function(req,res){
+  
+  console.log('got into post' + req + " " + res);
+
+  console.log('0');
+  var db = req.db;
+  
+  console.log("db is " + db)
+
+  console.log('1');
+
+  console.log(req.body.username);
+  console.log(req.body.password);
+
+  console.log('2');
+  var userName = "nice to meet";
+  var passWord = "ggwp";
+
+  console.log(userName);
+  console.log(passWord);
+
+  var collection = db.get('usercollection');
+
+  console.log('collection is ' + collection);
+
+  collection.insert({
+    "username" : userName,
+    "password" : passWord
+  }, function(err,doc){
+    if(err){
+      res.send("There is a problem adding the information to the database.");
+    }
+    else{
+      res.render('main');
+    }
+  
+  });
 });
 
 router.get('/userlist', function(req, res) {
@@ -30,28 +75,7 @@ router.get('/login', function(req,res){
 
 
 
-router.post('/adduser', function(req,res){
-  var db = req.db;
-  
-  console.log(req.body.username);
-   console.log(req.body.password);
 
-  var userName = req.body.username;
-  var passWord = req.body.password;
-
-  collection.insert({
-    "username" : userName,
-    "password" : password
-  }, function(err,doc){
-    if(err){
-      res.send("There is a problem adding the information to the database.");
-    }
-    else{
-      res.redirect("main");
-    }
-  
-  });
-});
 
 io.on('connection', function(socket){
   numuser++;
