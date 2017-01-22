@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var http = require('http');
+var firebase = require('firebase');
 
 //database stuff
 var mongo = require('mongodb');
