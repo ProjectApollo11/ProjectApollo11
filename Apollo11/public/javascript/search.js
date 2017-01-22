@@ -32,6 +32,19 @@ $(document).ready(function() {
 				
 			}
 			console.log(correctedWord);
+			
+			//for each word in the search query, see if it equals any of the tags for all posts. Record which tags point to the lost item, and then order them in most to least order.
+			var object;
+			for (var i = 0; i < correctedWord.length; i++) {
+				for (var j = 0; j < /*all objects*/; j++) {
+					for (var k = 0; k < /*all tags*/; k++) {
+						if (correctedWord[i] == "objects[tags]") {
+							object = "";
+						}
+					}
+				}
+				
+			}
 
 
 			
