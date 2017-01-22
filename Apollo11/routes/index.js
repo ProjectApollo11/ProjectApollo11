@@ -17,16 +17,16 @@ router.get('/main', function(req, res, next) {
   res.render('main');
 });
 
-router.post('/signin', function(req,res){
+router.get('/signin', function(req,res,next){
   res.render('signin');
 });
 
 router.post('/adduser', function(req,res){
-  
+
 
   var db = req.db;
-  
-  
+
+
   console.log("username " + req.body.username);
   console.log(req.body.password);
 
@@ -51,7 +51,7 @@ router.post('/adduser', function(req,res){
     else{
       res.render('main');
     }
-  
+
   });
 });
 
