@@ -17,6 +17,8 @@ router.get('/main', function(req, res, next) {
   res.render('main');
 });
 
+
+
 router.post('/adduser', function(req,res){
   
 
