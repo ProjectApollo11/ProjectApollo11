@@ -19,7 +19,7 @@
 		    margin-left: -10%; /* Your width divided by 2. */
 		}
 		.createPad {
-			background-color: white; 
+			background-color: white;
 			padding: 2em
 		}
 	</style>
@@ -50,17 +50,45 @@
 		</form>
 	</div>
 
-	<script>src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"</script> 
+	<script>src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"</script>
+	<script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyC9E47SNp6jQjpzVOEM9C0cs_lfpiteWgk",
+	    authDomain: "apollo11-c12fd.firebaseapp.com",
+	    databaseURL: "https://apollo11-c12fd.firebaseio.com",
+	    storageBucket: "apollo11-c12fd.appspot.com",
+	    messagingSenderId: "839183558758"
+	  };
+	  firebase.initializeApp(config);
+	</script>
 	<script>
 	$(document).ready(function() {
-    $('#register').click(function() {
-        var name = $('#username').val();
-        var password = $('#pwd').val();
-    	});
+	    $('#register').click(function() {
+	        var name = $('#username').val();
+	        var password = $('#pwd').val();
+	        console.log(name);
+	        console.log(password);
+	        firebase.auth().createUserWithEmailAndPassword(name, password).catch(function(error){
+	        		console.log(error.code);
+	        		console.log(error.message);
+	        		alert(error.message);
+	        	});
+	    	});
+
+	    $('#login').click(function() {
+	        var name = $('#username').val();
+	        var password = $('#pwd').val();
+	        console.log(name);
+	        console.log(password);
+	        firebase.auth().signInWithEmailAndPassword(name, password).catch(function(error){
+	        		console.log(error.code);
+	        		console.log(error.message);
+	        		alert(error.message);
+	        	});
+	    	});
 	});
-	function myFunction() {
-	    //do nothing
-	}
     </script>
 </body>
 </html>
