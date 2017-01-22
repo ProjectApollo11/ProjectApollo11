@@ -10,29 +10,36 @@ $(document).ready(function() {
 	
 	var imageSource = '{\"url\":\"' + imageURL + '\"}';
 
-	function base64toBlob(base64Data, contentType) {
-		contentType = contentType || '';
-		var sliceSize = 1024;
-		var byteCharacters = atob(base64Data);
-		var bytesLength = byteCharacters.length;
-		var slicesCount = Math.ceil(bytesLength / sliceSize);
-		var byteArrays = new Array(slicesCount);
-
-		for (var sliceIndex = 0; sliceIndex < slicesCount; ++sliceIndex) {
-			var begin = sliceIndex * sliceSize;
-			var end = Math.min(begin + sliceSize, bytesLength);
-
-			var bytes = new Array(end - begin);
-			for (var offset = begin, i = 0 ; offset < end; ++i, ++offset) {
-				bytes[i] = byteCharacters[offset].charCodeAt(0);
-			}
-			byteArrays[sliceIndex] = new Uint8Array(bytes);
-		}
-		return new Blob(byteArrays, { type: contentType });blob;
-	}
+	$.cloudinary.config({ cloud_name: 'dsmtzqsen', api_key: '599485669452552'});
+	
+	/**
+	cloudinary.v2.uploader.upload("../../views/LostLogo.png", function(error, result) {
+		console.log(result); 
+	});**/
+	
+	//cloudinary.uploader.upload("../../views/LostLogo.png");
 
 	
 	
+	$(function() {
+      
+        $.ajax({
+            url: "https://api.cloudinary.com/v1_1/dsmtzqsen/image/upload",
+            type: "POST",
+            // Request body
+			api_key: "599485669452552",
+            file: "../../views/LostLogo.png",
+			timestamp: "",
+			signature: "",
+			
+        })
+        .done(function(data) {
+			console.log(data);
+        })
+        .fail(function() {
+            console.log("error");
+        });
+    });
 	
 	
 	
