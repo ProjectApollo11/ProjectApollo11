@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 var http = require('http');
 var firebase = require('firebase');
 
+// var cloudinary = require('cloudinary');
+// var fs = require('fs');
+
 //database stuff
 var mongo = require('mongodb');
 var monk = require('monk');

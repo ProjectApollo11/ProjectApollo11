@@ -5,7 +5,7 @@ var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/Apollo11');
 
-var app = express();
+//var app = express();
 var numuser = 0;
 
 /* GET home page. */
@@ -21,13 +21,21 @@ router.get('/signin', function(req,res,next){
   res.render('signin');
 });
 
+router.get('/newItemForm', function(req,res,next){
+  res.render('newItemForm');
+});
+
+router.get('/chat', function(req,res,next){
+  res.render('chat');
+});
+
 router.get('/photos',function(req, res, next){  
   cloudinary.api.resources(function(items){
     res.render('photo', { images: items.resources, title: 'Gallery' });
   });
 });
 
-router.post('/upload', function(req, res){  
+/*router.post('/upload', function(req, res){  
   var imageStream = fs.createReadStream(req.files.image.path, { encoding: 'binary' })
     , cloudStream = cloudinary.uploader.upload_stream(function() { res.redirect('/'); });
 
@@ -44,7 +52,7 @@ router.configure('development', function(){
 });
 
 app.locals.api_key = cloudinary.config().api_key;  
-app.locals.cloud_name = cloudinary.config().cloud_name; 
+app.locals.cloud_name = cloudinary.config().cloud_name; */
 
 router.post('/adduser', function(req,res){
 
