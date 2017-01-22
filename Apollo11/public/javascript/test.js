@@ -10,8 +10,16 @@ $(document).ready(function() {
 	
 	var imageSource = '{\"url\":\"' + imageURL + '\"}';
 
-	$.cloudinary.config({ cloud_name: 'dsmtzqsen', api_key: '599485669452552'});
+	cloudinary.config({ 
+		cloud_name: 'dsmtzqsen', 
+		api_key: '599485669452552',
+		api_secret: 'DQh4Wxv0a-b-En8aRNjeQk3Bidg'
+	});
 	
+
+	cloudinary.uploader.upload("../../views/LostLogo.png", function(result) { 
+  		console.log(result) 
+});
 	/**
 	cloudinary.v2.uploader.upload("../../views/LostLogo.png", function(error, result) {
 		console.log(result); 

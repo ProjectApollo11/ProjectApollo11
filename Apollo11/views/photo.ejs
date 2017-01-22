@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lost and Found</title>
+</head>
+<body>	
+<h1>
+  <p>Welcome to <%= title %></p>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="image"/>
+    <input type="submit" value="Upload Image"/>
+  	<ul>
+  		<% images.forEach(function(image){ %>
+        <li><img src = <%= image.url %></li>
+    <% }); %>
+  </form>
+</h1>
+</body>
+</html>

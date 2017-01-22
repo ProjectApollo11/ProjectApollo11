@@ -5,7 +5,7 @@ var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/Apollo11');
 
-
+var app = express();
 var numuser = 0;
 
 /* GET home page. */
@@ -20,6 +20,31 @@ router.get('/main', function(req, res, next) {
 router.get('/signin', function(req,res,next){
   res.render('signin');
 });
+
+router.get('/photos',function(req, res, next){  
+  cloudinary.api.resources(function(items){
+    res.render('photo', { images: items.resources, title: 'Gallery' });
+  });
+});
+
+router.post('/upload', function(req, res){  
+  var imageStream = fs.createReadStream(req.files.image.path, { encoding: 'binary' })
+    , cloudStream = cloudinary.uploader.upload_stream(function() { res.redirect('/'); });
+
+  imageStream.on('data', cloudStream.write).on('end', cloudStream.end);
+});
+
+router.configure('development', function(){  
+  app.use(express.errorHandler());
+  cloudinary.config({ cloud_name: 'dsmtzqsen', api_key: '599485669452552', api_secret: 'DQh4Wxv0a-b-En8aRNjeQk3Bidg' });
+
+  cloudinary.v2.uploader.upload("/home/sample.jpg", 
+    function(error, result) {console.log(result); });
+
+});
+
+app.locals.api_key = cloudinary.config().api_key;  
+app.locals.cloud_name = cloudinary.config().cloud_name; 
 
 router.post('/adduser', function(req,res){
 
