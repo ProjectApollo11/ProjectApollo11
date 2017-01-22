@@ -15,7 +15,7 @@ $(document).ready(function() {
 	function createSynonyms(word, i, callback) {
 		
 		$.ajax({
-			url: "http://words.bighugelabs.com/api/2/5595cc268716dd1d0221f56011c81aa9/" + word + "/json",
+			url: "***http://words.bighugelabs.com/api/2/5595cc268716dd1d0221f56011c81aa9/" + word + "/json",
 			type: "GET",
 			success: function(data, status) {
 				//console.log(data);
