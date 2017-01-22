@@ -17,7 +17,9 @@ router.get('/main', function(req, res, next) {
   res.render('main');
 });
 
-
+router.post('/signin', function(req,res){
+  res.render('signin');
+});
 
 router.post('/adduser', function(req,res){
   

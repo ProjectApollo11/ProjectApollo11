@@ -45,12 +45,14 @@
 		  	</div>
 		  	<div>
 		  		<label>Already have an account? </label>
-		  		<button id="signIn" type="submit" class="btn btn-primary">Sign In</button>
+		  		
 		  	</div>
 		</form>
+
+			<div><button id="signIn" type="submit" class="btn btn-primary">Sign In</button></div>
 	</div>
 
-	<script>src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"</script>
+	<!--<script>src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"</script>
 	<script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
 	<script>
 	  // Initialize Firebase
@@ -62,9 +64,14 @@
 	    messagingSenderId: "839183558758"
 	  };
 	  firebase.initializeApp(config);
-	</script>
+	</script>-->
 	<script>
 	$(document).ready(function() {
+
+		$('#signIn').click(function(){
+			window.location.replace("/signin.ejs");
+		})
+
 	    $('#register').click(function() {
 	        var name = $('#username').val();
 	        var password = $('#pwd').val();
